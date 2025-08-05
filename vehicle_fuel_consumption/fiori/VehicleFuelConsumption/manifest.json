@@ -1,0 +1,61 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "vehiclefuellog",
+    "type": "application",
+    "title": "Vehicle Fuel Consumption",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zui_vehicle_fuel_srv/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      }
+    },
+    "routing": {
+      "targets": {
+        "VehiclesList": {
+          "type": "Component",
+          "id": "VehiclesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Vehicles"
+            }
+          }
+        },
+        "VehiclesObjectPage": {
+          "type": "Component",
+          "id": "VehiclesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Vehicles"
+            }
+          }
+        }
+      }
+    }
+  }
+}
